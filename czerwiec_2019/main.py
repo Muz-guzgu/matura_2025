@@ -32,7 +32,7 @@ def zadanie_4_1(dane_z_pliku: list[int])-> list[int]:
     return [liczba for
             liczba in
             dane_z_pliku if
-            czy_liczba_jest_pierwsza(liczba) and 100 <= liczba <= 5000]
+            100 <= liczba <= 5000 and czy_liczba_jest_pierwsza(liczba)]
 
 # Główna pętla programu
 def zamien_liste_na_napis(lista: list[int])-> str:
