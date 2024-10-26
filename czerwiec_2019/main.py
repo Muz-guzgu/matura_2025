@@ -34,23 +34,37 @@ def zadanie_4_1(dane_z_pliku: list[int])-> list[int]:
             dane_z_pliku if
             100 <= liczba <= 5000 and czy_liczba_jest_pierwsza(liczba)]
 
-# Główna pętla programu
 def zamien_liste_na_napis(lista: list[int])-> str:
     return '\n'.join([str(element) for element in lista])
 
 
+def odwroc_liczbe(liczba: int)-> int:
+    return int(str(liczba)[::-1])
+
+
+def zadanie_4_2(dane_z_pliku: list[int])-> list[int]:
+    return [liczba
+            for liczba
+            in dane_z_pliku
+            if czy_liczba_jest_pierwsza(liczba) and czy_liczba_jest_pierwsza(odwroc_liczbe(liczba))]
+
+# Główna pętla programu
 if __name__ == '__main__':
     # Wczytujemy dane (tylko jeden raz)
-    dane_z_pliku = wczytaj_dane_z_pliku(r".\\dane\\liczby_przyklad.txt")
+    plik = r".\\dane\\pierwsze.txt"
+    plik_przyklad = r".\\dane\\pierwsze_przyklad.txt"
+    dane_z_pliku = wczytaj_dane_z_pliku(plik)
 
     # rozwiązujemy zadania za pomocą funkcji i przypisujemy je do zmiennych
     wyniki_zadania_4_1 = zadanie_4_1(dane_z_pliku)
     wyniki_zadania_4_1_tekst_do_pliku = zamien_liste_na_napis(wyniki_zadania_4_1)
 
+    wyniki_zadania_4_2 = zadanie_4_2(dane_z_pliku)
+    wyniki_zadania_4_2_tekst_do_pliku = zamien_liste_na_napis(wyniki_zadania_4_2)
 
 
     # Wyniki zapisujemy do odpowiednich plików za pomocą jednej funkcji
     zapisz_zadanie(' wyniki4_1.txt', wyniki_zadania_4_1_tekst_do_pliku)
-    # zapisz_zadanie(' wyniki4_2.txt')
+    zapisz_zadanie(' wyniki4_2.txt', wyniki_zadania_4_2_tekst_do_pliku)
     # zapisz_zadanie(' wyniki4_3.txt')
     # zapisz_zadanie(' wyniki4_4.txt')
