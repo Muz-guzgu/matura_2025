@@ -52,7 +52,6 @@ def zamien_liczbe_na_liste_cyfr(liczba: int)-> list[int]:
     return [int(cyfra) for cyfra in str(liczba)]
 
 def licz_wage(liczba: str)-> int:
-    liczba = str(liczba)
     ile_cyfr = len(liczba)
     while ile_cyfr > 1:
         liczba = str(sum([int(i) for i in liczba]))
@@ -60,7 +59,7 @@ def licz_wage(liczba: str)-> int:
     return int(liczba)
 
 
-def zadanie_4_3(dane_z_pliku: list[str])-> int:
+def zadanie_4_3(dane_z_pliku: list[int])-> int:
     wagi =[licz_wage(str(liczba))
             for liczba
             in dane_z_pliku]
