@@ -4,13 +4,12 @@ def wczytaj_dane_z_pliku(nazwa_pliku: str)-> list[int]:
     'Funkcja czyta dane z pliku i wkłada je do listy zamieniając na int-y'
     with open(nazwa_pliku) as obiekt_plikowy:
         dane_z_pliku = obiekt_plikowy.readlines()
+        # print(dane_z_pliku)
     return [int(line.split()[0]) for line in dane_z_pliku]
-
 
 def zapisz_zadanie(nazwa_pliku: str, wyniki_zadania_4_1: str)-> None:
     with open(nazwa_pliku, 'w') as obiekt_plikowy:
         obiekt_plikowy.write(wyniki_zadania_4_1)
-
 
 def czy_liczba_jest_pierwsza(liczba: int) -> bool:
     if liczba < 2:
