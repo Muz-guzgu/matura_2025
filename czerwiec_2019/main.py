@@ -51,16 +51,17 @@ def zadanie_4_2(dane_z_pliku: list[int])-> list[int]:
 def zamien_liczbe_na_liste_cyfr(liczba: int)-> list[int]:
     return [int(cyfra) for cyfra in str(liczba)]
 
-def licz_wage(liczba: int)-> int:
-    liczba_lista = zamien_liczbe_na_liste_cyfr(liczba)
-    suma = 0
-    while len(liczba_lista) >= 2:
-        suma = sum(liczba_lista)
-        liczba_lista = zamien_liczbe_na_liste_cyfr(suma)
-    return suma
+def licz_wage(liczba: str)-> int:
+    liczba = str(liczba)
+    ile_cyfr = len(liczba)
+    while ile_cyfr > 1:
+        liczba = str(sum([int(i) for i in liczba]))
+        ile_cyfr = len(liczba)
+    return int(liczba)
+
 
 def zadanie_4_3(dane_z_pliku: list[str])-> int:
-    wagi =[licz_wage(liczba)
+    wagi =[licz_wage(str(liczba))
             for liczba
             in dane_z_pliku]
     return wagi.count(1)
@@ -69,7 +70,7 @@ def zadanie_4_3(dane_z_pliku: list[str])-> int:
 if __name__ == '__main__':
     # Wczytujemy dane (tylko jeden raz)
     plik = r".\\dane\\pierwsze.txt"
-    plik_przyklad = r".\\dane\\pierwsze_przyklad.txt"
+    plik_przyklad = r".\\dane\\pierwsze.txt"
     dane_z_pliku = wczytaj_dane_z_pliku(plik_przyklad)
 
     # rozwiązujemy zadania za pomocą funkcji i przypisujemy je do zmiennych
