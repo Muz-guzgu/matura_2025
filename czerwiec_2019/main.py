@@ -1,5 +1,5 @@
 import math
-from pydoc import resolve
+
 def wczytaj_dane_z_pliku(nazwa_pliku: str)-> list[int]:
     'Funkcja czyta dane z pliku i wkłada je do listy zamieniając na int-y'
     with open(nazwa_pliku) as obiekt_plikowy:
