@@ -40,6 +40,7 @@ def czy_conajmniej_polowa(linia: str)-> bool:
         return True
     return False
 
+# GŁÓWNA FUNKCJA STERUJĄCA
 def main()->None:
     plik = r".\\dane\\slowa.txt"
     plik_przyklad = r".\\dane\\slowa_przyklad.txt"
@@ -55,6 +56,6 @@ def main()->None:
 
     zapisz_zadanie('wyniki3.txt',string_do_pliku)
 
-
+# WYWOŁANIE FUNKCJI main()
 if __name__ == "__main__":
     main()
