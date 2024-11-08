@@ -1,4 +1,5 @@
 import re
+from collections import Counter
 
 
 def wczytaj_dane_z_pliku(nazwa_pliku: str) -> list[str]:
@@ -27,8 +28,17 @@ def rot13(line: str)-> str:
     return  ''.join(rot)
 
 
-def zadanie_3_3(dane_z_pliku: list[str])-> int:
-    pass
+def czy_conajmniej_polowa(linia: str)-> bool:
+    policzone_litery = Counter(linia)
+    ile_najczestszych_liter = policzone_litery.most_common()[0][1]
+    polowa = len(linia)/2
+    if ile_najczestszych_liter >= polowa:
+        return True
+    return False
+
+
+def zadanie_3_3(dane_z_pliku: list[str])-> list[str]:
+    return [linia for linia in dane_z_pliku if czy_conajmniej_polowa(linia)]
 
 def main()->None:
     plik = r".\\dane\\slowa.txt"
@@ -38,9 +48,12 @@ def main()->None:
     wyniki_zadania_3_1 = zadanie_3_1(dane_z_pliku)
     wyniki_zadania_3_2 = zadanie_3_2(dane_z_pliku)
     wyniki_zadania_3_3 = zadanie_3_3(dane_z_pliku)
-    print(wyniki_zadania_3_3)
 
-    zapisz_zadanie('wyniki4.txt','')
+    string_do_pliku = (f'zadanie 3.1 {wyniki_zadania_3_1}\n' +
+                       f'zadanie 3.2 {wyniki_zadania_3_2}\n' +
+                       f'zadanie 3.3 {",".join(wyniki_zadania_3_3)}')
+
+    zapisz_zadanie('wyniki3.txt',string_do_pliku)
 
 
 if __name__ == "__main__":
